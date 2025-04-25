@@ -4,7 +4,7 @@ import requests
 from PIL import Image, ImageSequence
 customtkinter.set_appearance_mode('dark')
 def get_weather(city):
-    API_KEY = "83dea637a7f64f442179fa1f5de24ac5"  #Your Api Key
+    API_KEY = "Your api key"  #Your Api Key
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
     
     try:

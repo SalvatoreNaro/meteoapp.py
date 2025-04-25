@@ -62,6 +62,18 @@ def invio(event):
         weather_info = get_weather(utente)
         libel.configure(text=weather_info, 
                        text_color=("red" if "Errore" in weather_info else "white"))
+def invios():
+    utente = entry.get().strip()  
+    if utente == "":
+        libel.configure(text="Inserire il nome di una città", text_color="red")
+    elif any(i in numeri for i in utente):
+        libel.configure(text="Non usare numeri o caratteri speciali", text_color="red")
+    else:
+        libel.configure(text="Caricamento...", text_color="white")  
+        window.update()  
+        weather_info = get_weather(utente)
+        libel.configure(text=weather_info, 
+                       text_color=("red" if "Errore" in weather_info else "white"))
     
         
 
@@ -75,7 +87,7 @@ entry = customtkinter.CTkEntry(master=frame,placeholder_text="Inserire la citta"
 entry.pack(padx=45,pady=10)
 libel = customtkinter.CTkLabel(master=frame,text="",fg_color="black",bg_color="black")
 libel.pack(padx=45,pady=10)
-button = customtkinter.CTkButton(master=frame,text="Cerca",fg_color="red",command=invio)
+button = customtkinter.CTkButton(master=frame,text="Cerca",fg_color="red",command=invios)
 button.pack(padx=45,pady=12)
 window.bind("<Return>",invio)
 
